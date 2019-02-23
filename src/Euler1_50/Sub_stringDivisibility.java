@@ -1,5 +1,8 @@
 package Euler1_50;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  * 
  * Sub-string divisibility Problem 43 The number, 1406357289, is a 0 to 9
@@ -20,8 +23,101 @@ package Euler1_50;
 public class Sub_stringDivisibility {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Timer t = new Timer();
+		permutation();
+		t.time();
+	}
+	private static ArrayList<Integer> org = new ArrayList<>();
+	public static void permutation() {
+		org.add(0);
+		org.add(1);
+		org.add(2);
+		org.add(3);
+		org.add(4);
+		org.add(5);
+		org.add(6);
+		org.add(7);
+		org.add(8);
+		org.add(9);
+		long totSum = 0;
+		int count = 1;
+		System.out.println(org);
+		while (count < 3628800) {
+			int N = org.size();
+			int i = N - 1;
+			while (org.get(i - 1) >= org.get(i)) {
+				i = i - 1;
 
+			}
+			int j = N;
+			while (org.get(j - 1) <= org.get(i - 1)) {
+				j = j - 1;
+			}
+			// swap values at position i-1 and j-1
+			swap(i - 1, j - 1);
+
+			i++;
+			j = N;
+			while (i < j) {
+				swap(i - 1, j - 1);
+				i++;
+				j--;
+			}
+			count++;
+			if (org.get(0) == 0) {
+				continue;
+			}
+
+			int s1 = Integer.parseInt(String.valueOf(org.get(1))
+					.concat(String.valueOf(org.get(2)))
+					.concat(String.valueOf(org.get(3))));
+			if (s1 % 2 != 0)
+				continue;
+
+			int s2 = Integer.parseInt(String.valueOf(org.get(2))
+					.concat(String.valueOf(org.get(3)))
+					.concat(String.valueOf(org.get(4))));
+			if (s2 % 3 != 0)
+				continue;
+			int s3 = Integer.parseInt(String.valueOf(org.get(3))
+					.concat(String.valueOf(org.get(4)))
+					.concat(String.valueOf(org.get(5))));
+			if (s3 % 5 != 0)
+				continue;
+			int s4 = Integer.parseInt(String.valueOf(org.get(4))
+					.concat(String.valueOf(org.get(5)))
+					.concat(String.valueOf(org.get(6))));
+			if (s4 % 7 != 0)
+				continue;
+			int s5 = Integer.parseInt(String.valueOf(org.get(5))
+					.concat(String.valueOf(org.get(6)))
+					.concat(String.valueOf(org.get(7))));
+			if (s5 % 11 != 0)
+				continue;
+			int s6 = Integer.parseInt(String.valueOf(org.get(6))
+					.concat(String.valueOf(org.get(7)))
+					.concat(String.valueOf(org.get(8))));
+			if (s6 % 13 != 0)
+				continue;
+			int s7 = Integer.parseInt(String.valueOf(org.get(7))
+					.concat(String.valueOf(org.get(8)))
+					.concat(String.valueOf(org.get(9))));
+			if (s7 % 17 != 0)
+				continue;
+
+			totSum += Long.parseLong(org.get(0) + "" + org.get(1) + ""
+					+ org.get(2) + "" + org.get(3) + "" + org.get(4) + ""
+					+ org.get(5) + "" + org.get(6) + "" + org.get(7) + ""
+					+ org.get(8) + "" + org.get(9));
+
+		}
+		System.out.println("Total sum of all permutations 0-9 : " + totSum);
+
+	}
+	public static void swap(int i, int j) {
+		int k = org.get(i);
+		org.set(i, org.get(j));
+		org.set(j, k);
 	}
 
 }
