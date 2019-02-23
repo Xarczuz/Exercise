@@ -30,7 +30,7 @@ public class PandigitalProducts {
 					long p = i / j;
 					String s = "" + p + "" + i + "" + j;
 					if (s.length() <10) {
-						if (match(s)) {
+						if (ifPandigital(s)) {
 							System.out.println(s);
 							array.add(i);
 						}		
@@ -50,7 +50,7 @@ public class PandigitalProducts {
 		t.time();
 	}
 
-	public static boolean match(String s) {
+	public static boolean ifPandigital(String s) {
 		HashSet<String> p = new HashSet<>(9);
 		p.add("1");
 		p.add("2");
