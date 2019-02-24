@@ -1,7 +1,6 @@
 package Euler1_50;
 
-import java.util.ArrayList;
-
+import java.util.Arrays;
 
 /**
  * 
@@ -27,30 +26,20 @@ public class Sub_stringDivisibility {
 		permutation();
 		t.time();
 	}
-	private static ArrayList<Integer> org = new ArrayList<>();
+	private static int[] org = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	public static void permutation() {
-		org.add(0);
-		org.add(1);
-		org.add(2);
-		org.add(3);
-		org.add(4);
-		org.add(5);
-		org.add(6);
-		org.add(7);
-		org.add(8);
-		org.add(9);
+
 		long totSum = 0;
 		int count = 1;
-		System.out.println(org);
+		System.out.println(Arrays.toString(org));
 		while (count < 3628800) {
-			int N = org.size();
+			int N = org.length;
 			int i = N - 1;
-			while (org.get(i - 1) >= org.get(i)) {
+			while (org[i - 1] >= org[i]) {
 				i = i - 1;
-
 			}
 			int j = N;
-			while (org.get(j - 1) <= org.get(i - 1)) {
+			while (org[(j - 1)] <= org[i - 1]) {
 				j = j - 1;
 			}
 			// swap values at position i-1 and j-1
@@ -64,60 +53,59 @@ public class Sub_stringDivisibility {
 				j--;
 			}
 			count++;
-			if (org.get(0) == 0) {
+			if (org[0] == 0) {
 				continue;
 			}
 
-			int s1 = Integer.parseInt(String.valueOf(org.get(1))
-					.concat(String.valueOf(org.get(2)))
-					.concat(String.valueOf(org.get(3))));
+			int s7 = Integer.parseInt(
+					String.valueOf(org[7]).concat(String.valueOf(org[8]))
+							.concat(String.valueOf(org[9])));
+			if (s7 % 17 != 0)
+				continue;
+			int s6 = Integer.parseInt(
+					String.valueOf(org[6]).concat(String.valueOf(org[7]))
+							.concat(String.valueOf(org[8])));
+			if (s6 % 13 != 0)
+				continue;
+			int s5 = Integer.parseInt(
+					String.valueOf(org[5]).concat(String.valueOf(org[6]))
+							.concat(String.valueOf(org[7])));
+			if (s5 % 11 != 0)
+				continue;
+			int s4 = Integer.parseInt(
+					String.valueOf(org[4]).concat(String.valueOf(org[5]))
+							.concat(String.valueOf(org[6])));
+			if (s4 % 7 != 0)
+				continue;
+
+			int s3 = Integer.parseInt(
+					String.valueOf(org[3]).concat(String.valueOf(org[4]))
+							.concat(String.valueOf(org[5])));
+			if (s3 % 5 != 0)
+				continue;
+			int s2 = Integer.parseInt(
+					String.valueOf(org[2]).concat(String.valueOf(org[3]))
+							.concat(String.valueOf(org[4])));
+			if (s2 % 3 != 0)
+				continue;
+			int s1 = Integer.parseInt(
+					String.valueOf(org[1]).concat(String.valueOf(org[2]))
+					.concat(String.valueOf(org[3])));
 			if (s1 % 2 != 0)
 				continue;
 
-			int s2 = Integer.parseInt(String.valueOf(org.get(2))
-					.concat(String.valueOf(org.get(3)))
-					.concat(String.valueOf(org.get(4))));
-			if (s2 % 3 != 0)
-				continue;
-			int s3 = Integer.parseInt(String.valueOf(org.get(3))
-					.concat(String.valueOf(org.get(4)))
-					.concat(String.valueOf(org.get(5))));
-			if (s3 % 5 != 0)
-				continue;
-			int s4 = Integer.parseInt(String.valueOf(org.get(4))
-					.concat(String.valueOf(org.get(5)))
-					.concat(String.valueOf(org.get(6))));
-			if (s4 % 7 != 0)
-				continue;
-			int s5 = Integer.parseInt(String.valueOf(org.get(5))
-					.concat(String.valueOf(org.get(6)))
-					.concat(String.valueOf(org.get(7))));
-			if (s5 % 11 != 0)
-				continue;
-			int s6 = Integer.parseInt(String.valueOf(org.get(6))
-					.concat(String.valueOf(org.get(7)))
-					.concat(String.valueOf(org.get(8))));
-			if (s6 % 13 != 0)
-				continue;
-			int s7 = Integer.parseInt(String.valueOf(org.get(7))
-					.concat(String.valueOf(org.get(8)))
-					.concat(String.valueOf(org.get(9))));
-			if (s7 % 17 != 0)
-				continue;
-
-			totSum += Long.parseLong(org.get(0) + "" + org.get(1) + ""
-					+ org.get(2) + "" + org.get(3) + "" + org.get(4) + ""
-					+ org.get(5) + "" + org.get(6) + "" + org.get(7) + ""
-					+ org.get(8) + "" + org.get(9));
+			totSum += Long.parseLong(org[0] + "" + org[1] + "" + org[2] + ""
+					+ org[3] + "" + org[4] + "" + org[5] + "" + org[6] + ""
+					+ org[7] + "" + org[8] + "" + org[9]);
 
 		}
 		System.out.println("Total sum of all permutations 0-9 : " + totSum);
 
 	}
 	public static void swap(int i, int j) {
-		int k = org.get(i);
-		org.set(i, org.get(j));
-		org.set(j, k);
+		int k = org[i];
+		org[i] = org[j];
+		org[j] = k;
 	}
 
 }
