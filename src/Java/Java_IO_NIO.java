@@ -41,26 +41,26 @@ public class Java_IO_NIO {
 
 		while (true) {
 			System.out.println("1: Avsluta");
-			System.out.println("2: Lägg till person");
+			System.out.println("2: LÃ¤gg till person");
 			System.out.println("3: Visa alla personer");
-			System.out.println("4: Läs in alla personer från fil");
+			System.out.println("4: LÃ¶s in alla personer frÃ¥n fil");
 			System.out.println("5: Spara alla personer till fil");
 			System.out.println("6: Skapa en person automatiskt");
 			String s = br.readLine();
 
 			switch (s) {
 				case "1" :
-					System.out.println("Adjö!");
+					System.out.println("AdjÃ¶!");
 					return;
 				case "2" :
 					System.out.print("Namn:");
 					String n = br.readLine();
-					System.out.print("Ålder:");
-					String å = br.readLine();
-					System.out.print("Höjd:");
+					System.out.print("Ã¥lder:");
+					String Ã¥ = br.readLine();
+					System.out.print("HÃ¶jd:");
 					String h = br.readLine();
 					array.add(
-							new P(n, Integer.parseInt(å), Float.parseFloat(h)));
+							new P(n, Integer.parseInt(Ã¥), Float.parseFloat(h)));
 					break;
 				case "3" :
 					System.out.println("Personer: ");
@@ -72,7 +72,7 @@ public class Java_IO_NIO {
 					break;
 				case "4" :
 					array = (ArrayList<P>) deSerialize(ser);
-					System.out.println("Inläst!");
+					System.out.println("InlÃ¤st!");
 					break;
 				case "5" :
 					serialize(array, ser);
@@ -195,7 +195,7 @@ public class Java_IO_NIO {
 		}
 		return array2;
 	}
-	public void övning1() {
+	public void Ã¶vning1() {
 		ArrayList<String> arry = new ArrayList<String>();
 		arry.add("Lisa");
 		arry.add("Fabian");
@@ -225,19 +225,19 @@ public class Java_IO_NIO {
 class P implements Serializable {
 	private static final long serialVersionUID = 4154872473018778610L;
 	String namn;
-	int ålder;
-	float höjd;
-	public P(String namn, int ålder, float höjd) {
+	int Ã¥lder;
+	float hÃ¶jd;
+	public P(String namn, int Ã¥lder, float hÃ¶jd) {
 		this.namn = namn;
-		this.ålder = ålder;
-		this.höjd = höjd;
+		this.Ã¥lder = Ã¥lder;
+		this.hÃ¶jd = hÃ¶jd;
 	}
 	@Override
 	public String toString() {
-		return "[namn:" + namn + ", ålder:" + ålder + ", höjd:" + höjd + "]";
+		return "[namn:" + namn + ", Ã¥lder:" + Ã¥lder + ", hÃ¶jd:" + hÃ¶jd + "]";
 	}
 	public void visa() {
-		System.out.printf("Namn:%-10s Ålder:%4d Höjd: %5.1fcm\n", namn, ålder,
-				höjd);
+		System.out.printf("Namn:%-10s Ã¥lder:%4d HÃ¶jd: %5.1fcm\n", namn, Ã¥lder,
+				hÃ¶jd);
 	}
 }

@@ -20,7 +20,7 @@ public class CollectionSort {
 		p.add(new People("Nils", 21, "053-322355", "AungsGatan 4",
 				"Stockholm"));
 		p.add(new People("Karl", 12, "050-92235", "KungsGatan 44", "Falun"));
-		p.add(new People("Grham", 421, "050-142235", "CungsGatan 4", "Malmö"));
+		p.add(new People("Grham", 421, "050-142235", "CungsGatan 4", "MalmÃ¶"));
 		p.add(new People("Sara", 319, "10-3578235", "LungsGatan 45", "Bor"));
 		p.add(new People("Sofia", 41, "15-7922635", "NungsGatan 4", "Bor"));
 		p.add(new People("Pelle", 61, "250-42235", "GungsGatan 4", "Kor"));
@@ -32,7 +32,7 @@ public class CollectionSort {
 		Collections.sort(p, new SortStad());
 		// Collections.sort(p, new SortAdress());
 		// Collections.sort(p, new SortTelefon());
-		System.out.println("Namn:    ålder:   Tele:      Adress:       Stad:");
+		System.out.println("Namn:    Ã¥lder:   Tele:      Adress:       Stad:");
 		for (People people : p)
 			people.print();
 
@@ -41,15 +41,15 @@ public class CollectionSort {
 class People implements Comparable<People> {
 
 	protected String namn, tel, adress, stad;
-	protected int ålder;
+	protected int Ã¥lder;
 
 	/**
 	 * Instantiates a new people.
 	 *
 	 * @param namn
 	 *            the namn
-	 * @param ålder
-	 *            the ålder
+	 * @param Ã¥lder
+	 *            the Ã¥lder
 	 * @param tel
 	 *            the tel
 	 * @param adress
@@ -57,10 +57,10 @@ class People implements Comparable<People> {
 	 * @param stad
 	 *            the stad
 	 */
-	public People(String namn, int ålder, String tel, String adress,
+	public People(String namn, int Ã¥lder, String tel, String adress,
 			String stad) {
 		this.namn = namn;
-		this.ålder = ålder;
+		this.Ã¥lder = Ã¥lder;
 		this.tel = tel;
 		this.adress = adress;
 		this.stad = stad;
@@ -72,20 +72,20 @@ class People implements Comparable<People> {
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(People arg0) {
-		return this.ålder - arg0.ålder;
+		return this.Ã¥lder - arg0.Ã¥lder;
 	}
 
 	/**
 	 * Prints the OBJECT.
 	 */
 	public void print() {
-		System.out.printf("%-10s %3d %-13s %-14s %-10s\n", namn, ålder, tel,
+		System.out.printf("%-10s %3d %-13s %-14s %-10s\n", namn, Ã¥lder, tel,
 				adress, stad);
 	}
 	@Override
 	public String toString() {
 		return "People [namn=" + namn + ", tel=" + tel + ", adress=" + adress
-				+ ", stad=" + stad + ", ålder=" + ålder + "]";
+				+ ", stad=" + stad + ", Ã¥lder=" + Ã¥lder + "]";
 	}
 
 }
