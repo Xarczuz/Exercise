@@ -8,8 +8,8 @@ public class AsciiArt {
 
     public static void main(String[] args) throws IOException {
 
-        int width = 50;
-        int height = 50;
+        int width = 60;
+        int height = 60;
 
         //BufferedImage image = ImageIO.read(new File("/Users/mkyong/Desktop/logo.jpg"));
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -19,7 +19,7 @@ public class AsciiArt {
         Graphics2D graphics = (Graphics2D) g;
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.drawString("你好", 18, 24);
+        graphics.drawString("你好", 18, 34);
 
         //save this image
         //ImageIO.write(image, "png", new File("/users/mkyong/ascii-art.png"));

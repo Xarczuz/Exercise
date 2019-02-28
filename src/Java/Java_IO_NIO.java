@@ -36,7 +36,7 @@ public class Java_IO_NIO {
 		
 		BufferedReader br = new BufferedReader(
 				new InputStreamReader(System.in));
-		String[] names = readAllByte("src/Euler1_50/namesScore.txt", CHARSET).get(0)
+		String[] names = readAllByte("src/Euler1to50/namesScore.txt", CHARSET).get(0)
 				.replace("\"", "").split(",");
 
 		while (true) {
@@ -89,7 +89,7 @@ public class Java_IO_NIO {
 	}
 	public static ArrayList<P> randomizeData(Charset charset) {
 		ArrayList<P> array = new ArrayList<>();
-		String[] s = readAllByte("src/Euler1_50/namesScore.txt", charset).get(0)
+		String[] s = readAllByte("src/Euler1to50/namesScore.txt", charset).get(0)
 				.replace("\"", "").split(",");
 		for (int i = 0; i < 100000; i++) {
 			array.add(new P(s[rand.nextInt(s.length)], rand.nextInt(110) + 1,

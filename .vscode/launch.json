@@ -1,0 +1,12 @@
+{"console": "externalTerminal",
+    "configurations": [{"console": "externalTerminal"},
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Java_IO_NIO",
+            "request": "launch",
+            "mainClass": "Java.Java_IO_NIO",
+            "projectName": "Origin",
+            "console": "externalTerminal"
+        }
+    ]
+}
