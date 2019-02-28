@@ -19,7 +19,7 @@ public class AsciiArt {
         Graphics2D graphics = (Graphics2D) g;
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.drawString("你好", 18, 34);
+        graphics.drawString("你好", 12, 34);
 
         //save this image
         //ImageIO.write(image, "png", new File("/users/mkyong/ascii-art.png"));
