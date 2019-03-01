@@ -20,7 +20,7 @@ import java.util.LinkedList;
  * @author Chjun-chi
  * 
  */
-public abstract class DistinctPrimesFactors {
+public class DistinctPrimesFactors {
 	private static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) {
 		Timer t = new Timer();
@@ -32,9 +32,7 @@ public abstract class DistinctPrimesFactors {
 		int consecutive = 4;
 		int distinctPrimes = consecutive;
 		LinkedList<Integer> stack = new LinkedList<>();
-
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
-
 			if (distinctPrimes(i) == distinctPrimes) {
 				if (stack.size() > 0 && (stack.getLast() + 1) == i) {
 					stack.add(i);
@@ -57,8 +55,8 @@ public abstract class DistinctPrimesFactors {
 	}
 	public static int distinctPrimes(int nr) {
 		int nrOfDistinctPrimes = 0;
-		for (Integer integer : primes) {
-			if (nr % integer == 0) {
+		for (Integer prime : primes) {
+			if (nr % prime == 0) {
 				nrOfDistinctPrimes++;
 			}
 		}
