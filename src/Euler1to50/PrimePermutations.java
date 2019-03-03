@@ -35,7 +35,6 @@ public class PrimePermutations {
 			}
 			ArrayList<Integer> arr=permutaion(i);
 			if (arr.size()==3) {
-				
 				if((Math.abs(arr.get(0)-arr.get(1))+ arr.get(1))==arr.get(2)) {	
 					System.out.println("prime i = "+ arr);
 				}				
