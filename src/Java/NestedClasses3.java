@@ -5,6 +5,7 @@ public class NestedClasses3 {
 	public static void main(String[] args) {
 		NestedClasses3 yttre = new NestedClasses3();
 		NestedClasses3.inreKlass inre = yttre.new inreKlass();
+		
 		inre.print();
 	}
 	public void print() {
@@ -19,3 +20,4 @@ public class NestedClasses3 {
 		}
 	}
 }
+
