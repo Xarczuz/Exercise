@@ -3,6 +3,8 @@ package Euler50to100;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import Euler1to50.Timer;
+
 /**
  * 
  * 
@@ -27,33 +29,122 @@ import java.util.HashSet;
 public class PrimeDigitReplacements {
 
 	public static void main(String[] args) {
-		final int PrimeValueFamily = 6;
+		Timer t = new Timer();
+		final int PrimeValueFamily = 8;
 		HashSet<String> primes = new HashSet<>();
 		ArrayList<Integer> primeList = new ArrayList<>();
-		for (int i = 10; i < 1000000; i++) {
+		for (int i = 2; i < 1000000; i++) {
 			if (checkPrime(i)) {
 				primes.add(String.valueOf(i));
 				primeList.add(i);
 			}
 		}
-		
-			
-			
-			for (Integer p : primeList) {
-				String s = String.valueOf(p);
-				
-				for (int i = 0; i < s.length(); i++) {
-					String tmp  =  s.substring(i, i+1);
-					
-				}
-				
-				
-				
-				
-			}
-		
-	}
 
+		for (Integer p : primeList) {
+			String s = String.valueOf(p);
+			ArrayList<String> primeArray = toArray(s);
+			ArrayList<String> primeFamily = new ArrayList<>();
+
+			for (int i = 0; i < primeArray.size(); i++) {
+				int j = 0;
+				if (i == 0) {
+					j = 1;
+				}
+				for (; j < 10; j++) {
+					primeArray.set(i, String.valueOf(j));
+					if (checkPrime(
+							Integer.parseInt(arrayToString(primeArray)))) {
+						primeFamily.add(arrayToString(primeArray));
+					}
+				}
+				if (primeFamily.size() == PrimeValueFamily) {
+					System.out.println(primeFamily.toString());
+					return;
+				} else {
+					primeFamily = new ArrayList<>();
+					primeArray = toArray(s);
+					for (int k = 1; k < primeArray.size(); k++) {
+						if (k == i) {
+							continue;
+						}
+						int g = 0;
+						if (i == 0) {
+							g = 1;
+						}
+						for (; g < 10; g++) {
+							primeArray.set(i, String.valueOf(g));
+							primeArray.set(k, String.valueOf(g));
+							if (checkPrime(Integer
+									.parseInt(arrayToString(primeArray)))) {
+								primeFamily.add(arrayToString(primeArray));
+							}
+						}
+						if (primeFamily.size() == PrimeValueFamily) {
+							System.out.println(primeFamily.toString());
+							return;
+						} else {
+							primeFamily = new ArrayList<>();
+							primeArray = toArray(s);
+
+							for (int m = 1; m < primeArray.size(); m++) {
+								if (k == m || i == m) {
+									continue;
+								}
+								int l = 0;
+								if (i == 0) {
+									l = 1;
+								}
+								for (; l < 10; l++) {
+									primeArray.set(i, String.valueOf(l));
+									primeArray.set(k, String.valueOf(l));
+									primeArray.set(m, String.valueOf(l));
+									if (checkPrime(Integer.parseInt(
+											arrayToString(primeArray)))) {
+										primeFamily
+												.add(arrayToString(primeArray));
+									}
+								}
+								if (primeFamily.size() == PrimeValueFamily) {
+									System.out.println(primeFamily.toString());
+									t.time();
+									return;
+								} else {
+									primeFamily = new ArrayList<>();
+									primeArray = toArray(s);
+								}
+							}
+
+						}
+						if (primeFamily.size() == PrimeValueFamily) {
+							System.out.println(primeFamily.toString());
+							return;
+						}
+						primeFamily = new ArrayList<>();
+						primeArray = toArray(s);
+					}
+				}
+			}
+		}
+	}
+	public static String arrayToString(ArrayList<String> arr) {
+		String s = "";
+		for (String string : arr) {
+			s += string;
+		}
+		return s;
+	}
+	public static ArrayList<String> toArray(String s) {
+
+		ArrayList<String> array = new ArrayList<>();
+
+		for (int i = 0; i < s.length(); i++) {
+			String tmp = s.substring(i, i + 1);
+			array.add(tmp);
+		}
+
+		return array;
+
+	}
 	public static boolean checkPrime(long n) {
 		if (n == 2 || n == 3)
 			return true;
