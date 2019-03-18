@@ -51,7 +51,6 @@ public class Leet4 {
 						break;
 					}
 				}
-				
 			}
 			System.out.println("median: " + median);
 			return median;
