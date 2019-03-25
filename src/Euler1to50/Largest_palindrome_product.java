@@ -24,7 +24,7 @@ public class Largest_palindrome_product {
 		for (long i = number; i >= it; i--) {
 			for (long g = number; g >= it; g--) {
 				long sum = i * g;
-				if (sum > max && isPalindrome(sum)) {
+				if (sum > max && isPalindrome(String.valueOf(sum))) {
 					max = sum;
 					System.out.println(max + "=" + i + "X" + g);
 					break;
@@ -44,7 +44,14 @@ public class Largest_palindrome_product {
 		}
 		return false;
 	}
-
+	public static boolean isPalindrome(String nr) {
+		for (int i = 0,k=nr.length()-1,size = nr.length()/2; i < size; i++,k--) {
+			if(!nr.substring(i,i+1).contentEquals(nr.substring(k,k+1))) {
+				return false;
+			}
+		}
+		return true;
+	}
 	public static int nToNumber(int n) {
 		String nr = "";
 		for (int i = 0; i < n; i++) {
