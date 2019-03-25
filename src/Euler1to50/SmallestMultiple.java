@@ -1,7 +1,7 @@
 package Euler1to50;
 import java.util.ArrayList;
 
-public class Smallet_multiple {
+public class SmallestMultiple {
 
 	public static void main(String[] args) {
 
@@ -21,9 +21,10 @@ public class Smallet_multiple {
 	 */
 	public static void sm() {
 		int n = 20;
-		int idx = 1;
+		int idx = 0;
 		int nr = 1;
 		while (true) {
+			
 			for (int i = 1; i <= n; i++) {
 				if (nr % i == 0) {
 					idx++;

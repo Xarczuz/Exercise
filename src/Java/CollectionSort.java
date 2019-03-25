@@ -1,7 +1,7 @@
 package Java;
 
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -29,9 +29,11 @@ public class CollectionSort {
 
 		// Collections.sort(p);
 		// Collections.sort(p, new SortName());
-		Collections.sort(p, new SortStad());
+//		Collections.sort(p, new SortStad());
 		// Collections.sort(p, new SortAdress());
 		// Collections.sort(p, new SortTelefon());
+		p.sort((People p1, People p2)->p1.namn.compareTo(p2.namn));
+
 		System.out.println("Namn:    ålder:   Tele:      Adress:       Stad:");
 		for (People people : p)
 			people.print();
