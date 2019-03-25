@@ -1,7 +1,5 @@
 package Euler50to100;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -18,16 +16,14 @@ public class PokerHands {
 
 	public static void main(String[] args) throws IOException {
 		Timer t = new Timer();
-//		BufferedReader reader = Files.newBufferedReader(
-//				Paths.get("files/p054_poker.txt"), Charset.forName("UTF-8"));
 		List<String> fileArr = null;
 		fileArr = Files.readAllLines(Paths.get("files/p054_poker.txt"),
 				Charset.forName("UTF-8"));
-
-		String line = null;
 		int h1Wins = 0;
-		int idx =0;
-		while (idx<fileArr.size()) {
+		int idx = 0;
+		
+		int fSize =fileArr.size();
+		while (idx < fSize) {
 			String[] hand = fileArr.get(idx).split(" ");
 			idx++;
 			Hand h1 = new Hand(new Card(hand[0]), new Card(hand[1]),
@@ -37,7 +33,8 @@ public class PokerHands {
 			if (h1.handValue > h2.handValue) {
 				h1Wins++;
 			} else if (h1.handValue == h2.handValue) {
-				for (int i = 0; i < h1.hand.size(); i++) {
+				int h1Size=h1.hand.size();
+				for (int i = 0; i < h1Size; i++) {
 					int h1Value = h1.hand.get(i).getValue();
 					int h2Value = h2.hand.get(i).getValue();
 					if (h1Value > h2Value) {
@@ -46,7 +43,7 @@ public class PokerHands {
 					} else if (h1Value < h2Value) {
 						break;
 					}
-					if (i == h1.hand.size() - 1 && h1Value == h2Value) {
+					if (i == h1Size - 1 && h1Value == h2Value) {
 						System.out.println("Draw");
 					}
 				}
@@ -54,7 +51,6 @@ public class PokerHands {
 		}
 		System.out.println("h1 wins: " + h1Wins);
 		t.time();
-
 	}
 }
 
@@ -102,7 +98,7 @@ class Hand {
 	public ArrayList<Card> hand;
 	private boolean suit, straight;
 	public int handValue = 0;
-
+	public int hSize;
 	public Hand(Card card, Card card2, Card card3, Card card4, Card card5) {
 		hand = new ArrayList<Card>();
 		this.hand.add(card);
@@ -110,6 +106,7 @@ class Hand {
 		this.hand.add(card3);
 		this.hand.add(card4);
 		this.hand.add(card5);
+		this.hSize = this.hand.size();
 		this.hand.sort((Card c1, Card c2) -> c2.getValue() - c1.getValue());
 		this.suit = checkSuit();
 		this.straight = checkStraight();
@@ -117,7 +114,7 @@ class Hand {
 	}
 	private boolean checkSuit() {
 		String suit = this.hand.get(0).getSuit();
-		for (int i = 1; i < this.hand.size(); i++) {
+		for (int i = 1; i < this.hSize; i++) {
 			if (!this.hand.get(i).getSuit().contentEquals(suit)) {
 				return false;
 			}
@@ -126,7 +123,7 @@ class Hand {
 	}
 	public void printHand() {
 		String s = "";
-		for (int i = 0; i < this.hand.size(); i++) {
+		for (int i = 0; i < this.hSize; i++) {
 			s = s + this.hand.get(i).getCard() + " ";
 		}
 		System.out.println(s + " - " + this.handValue);
@@ -192,7 +189,7 @@ class Hand {
 				return c1 - c2;
 			});
 			int idx = sArr.get(0);
-			for (int i = 1; i < sArr.size(); i++) {
+			for (int i = 1, size = sArr.size(); i < size; i++) {
 				if (sArr.get(i) - i != idx) {
 					return false;
 				}
