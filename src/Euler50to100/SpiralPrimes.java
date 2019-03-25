@@ -6,7 +6,7 @@ import Euler1to50.Timer;
  * 
  * Problem 58
  * 
- * @author chjunchi
+ * @author Xarczuz
  *
  */
 public class SpiralPrimes {
