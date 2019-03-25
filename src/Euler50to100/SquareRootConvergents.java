@@ -2,18 +2,15 @@ package Euler50to100;
 
 import java.math.BigInteger;
 
+import Euler1to50.Timer;
+
 public class SquareRootConvergents {
 
 	public static void main(String[] args) {
-
+Timer t = new Timer();
 		String s1 = "1+";
-
 		String s2 = "1/(2+";
-
 		String s3 = "1/2";
-
-		String s4 = ")";
-
 		int num=0;
 		for (int j = 1; j <= 1000; j++) {
 			String frac="";
@@ -27,13 +24,32 @@ public class SquareRootConvergents {
 			}
 		}
 		System.out.println("num: "+ num);
-		
-		// C +A/B
-		// (C*B + A)/B
-		// 1+1/2 = 3/2
-		// (2*1+1)/2 = a=3 / b=2	
+		t.time();
+		Timer t2 = new Timer();
+		System.out.println(get_answer());
+		t2.time();
 
 	}
+	public static int get_answer() {
+	    int answer = 0;
+	    BigInteger a, b, c;
+	    for (int i=2;i<=1000;i++) {
+	      a=BigInteger.valueOf(1);
+	      b=BigInteger.valueOf(2);
+	      for(int n=1;n<i;n++) {
+	        a=(BigInteger.valueOf(2).multiply(b)).add(a);
+	        c=b;
+	        b=a;
+	        a=c;
+	      }
+	      a=a.add(b);
+	      if(String.valueOf(a).length()>String.valueOf(b).length()) {
+	        answer++;
+	      }
+	    }
+	    
+	  return answer;
+	  }
 	public static boolean fraction(String frac) {
 		int i = frac.length() - 1;
 		String b = frac.substring(i, i + 1);
