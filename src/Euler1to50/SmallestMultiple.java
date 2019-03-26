@@ -59,6 +59,10 @@ public class SmallestMultiple {
 				x.add(number);
 			}
 		}
+//		12345678910 11121314151617181920
+//		i=10
+//		2*3*2*5*2*7*2*3*2
+
 		long result = 1;
 		for (int number : x) {
 			result *= number;
