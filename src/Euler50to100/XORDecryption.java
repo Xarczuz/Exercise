@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import Euler1to50.Timer;
+
 /**
  * Problem 59
  * 
@@ -36,16 +38,16 @@ import java.util.List;
 public class XORDecryption {
 
 	public static void main(String[] args) throws IOException {
-
+		Timer t = new Timer();
 		int[] crypt = readFile();
-
-	String msg=	start(crypt);
-
-	int sum =0;
-	for (int i = 0; i < msg.length(); i++) {
-		sum += (int)msg.charAt(i);
-	}
-	System.out.println("Total msg AScii sum: " + sum);
+		String msg = start(crypt);
+		System.out.println(msg);
+		int sum = 0;
+		for (int i = 0; i < msg.length(); i++) {
+			sum += (int) msg.charAt(i);
+		}
+		System.out.println("Total msg AScii sum: " + sum);
+		t.time();
 	}
 	public static String start(int[] crypt) throws IOException {
 
@@ -77,9 +79,8 @@ public class XORDecryption {
 					}
 
 					if (word) {
-
 						d = 0;
-						StringBuilder sb= new StringBuilder();
+						StringBuilder sb = new StringBuilder();
 						for (Integer s : crypt) {
 							key = g[d % g.length];
 							int ascii = s ^ key;
@@ -88,7 +89,7 @@ public class XORDecryption {
 							sb.append(t);
 							d++;
 						}
-						
+
 						return sb.toString();
 					}
 
