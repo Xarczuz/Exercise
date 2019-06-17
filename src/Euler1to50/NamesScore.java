@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,7 +42,10 @@ public class NamesScore {
 		alpha.put("x", 24);
 		alpha.put("y", 25);
 		alpha.put("z", 26);
-		File file = new File(".\\src\\Euler\\namesScore.txt");
+		
+		
+
+		File file = new File(Paths.get("./src/Euler1to50/namesScore.txt").toFile().getPath());
 
 		br = new BufferedReader(new FileReader(file));
 		String[] names = null;
