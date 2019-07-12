@@ -38,6 +38,9 @@ public class OddPeriodSquareRoots {
 		}
 		System.out.println("Exactly: " + odd + " have an odd period");
 		t.time();
+	
+		int x=10;
+		System.out.println((2 + x + 2*x^2 - 3*x^3 - x^4 + x^6)/(1 - 2*x^3 + x^6));
 	}
 
 }
