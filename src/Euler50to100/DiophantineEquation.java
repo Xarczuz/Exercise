@@ -7,7 +7,7 @@ import Euler1to50.Timer;
 
 /**
  * Problem 66
- * 
+ * TODO
  * @author Chjun-chi
  *
  */
