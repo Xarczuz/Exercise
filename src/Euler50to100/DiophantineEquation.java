@@ -1,6 +1,5 @@
 package Euler50to100;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 
 import Euler1to50.Timer;
