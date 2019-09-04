@@ -23,7 +23,6 @@ public class Arrays {
 			System.out.println(person);
 		}
 	}
-
 }
 
 class persons {
