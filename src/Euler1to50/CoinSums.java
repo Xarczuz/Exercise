@@ -22,11 +22,10 @@ public class CoinSums {
 	HashSet<Permutation> paths = new HashSet<Permutation>();
 
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
+     * The java.main method.
+     *
+     * @param args the arguments
+     */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 

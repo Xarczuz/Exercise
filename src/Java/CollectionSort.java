@@ -1,20 +1,20 @@
 package Java;
 
 import java.util.ArrayList;
-//import java.util.Collections;
 import java.util.Comparator;
+
+//import java.util.Collections;
 
 /**
  * The Class CollectionSort.
  */
 public class CollectionSort {
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
+    /**
+     * The java.main method.
+     *
+     * @param args the arguments
+     */
 	public static void main(String[] args) {
 		ArrayList<People> p = new ArrayList<People>();
 		p.add(new People("Nils", 21, "053-322355", "AungsGatan 4",
