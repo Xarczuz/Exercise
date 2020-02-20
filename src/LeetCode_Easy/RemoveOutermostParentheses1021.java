@@ -33,9 +33,25 @@ public class RemoveOutermostParentheses1021 {
         return stringBuilder.toString();
     }
 
+    public static String removeOuterParentheses3(String S) {
+        int balance = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char c : S.toCharArray()) {
+            if (c == '(') {
+                balance++;
+            } else {
+                balance--;
+            }
+            if ((c != '(' || balance != 1) && (c != ')' || balance != 0)) {
+                stringBuilder.append(c);
+            }
+        }
+        return stringBuilder.toString();
+    }
+
     public static void main(String[] args) {
         System.out.println(removeOuterParentheses2("(()())(())"));
-        System.out.println(removeOuterParentheses("(()())(())(()(()))"));
-        System.out.println(removeOuterParentheses("()()") + ":here");
+        System.out.println(removeOuterParentheses3("(()())(())(()(()))"));
+        System.out.println(removeOuterParentheses3("()()") + ":here");
     }
 }
