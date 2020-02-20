@@ -1,9 +1,7 @@
-package LeetCode;
+package LeetCode_Easy;
 
-import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class RangeSumofBST938 {
     public static int rangeSumBST(TreeNode root, int L, int R) {

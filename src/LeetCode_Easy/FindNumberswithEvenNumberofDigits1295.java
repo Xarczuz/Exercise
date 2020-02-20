@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class FindNumberswithEvenNumberofDigits1295 {
     public int findNumbers(int[] nums) {

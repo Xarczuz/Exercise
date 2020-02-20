@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class NumberofStepstoReduceaNumbertoZero1342 {
 

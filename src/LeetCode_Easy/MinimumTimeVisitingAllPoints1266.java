@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class MinimumTimeVisitingAllPoints1266 {
     public static int minTimeToVisitAllPoints(int[][] points) {

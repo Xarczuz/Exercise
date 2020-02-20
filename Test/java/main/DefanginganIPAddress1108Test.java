@@ -1,6 +1,6 @@
 package main;
 
-import LeetCode.DefanginganIPAddress1108;
+import LeetCode_Easy.DefanginganIPAddress1108;
 import org.junit.jupiter.api.Test;
 
 class DefanginganIPAddress1108Test {

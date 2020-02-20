@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class Maximum69Number1323 {
     public static int maximum69Number(int num) {

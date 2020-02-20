@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class CountNegativeNumbersinaSortedMatrix1351 {
     public static int countNegatives(int[][] grid) {

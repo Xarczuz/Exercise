@@ -1,6 +1,6 @@
 package main;
 
-import LeetCode.MaximumIndex;
+import LeetCode_Easy.MaximumIndex;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

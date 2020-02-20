@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode_Easy;
 
 public class SubtracttheProductandSumofDigitsofanIntege1281 {
     public static int subtractProductAndSum(int n) {
