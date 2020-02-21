@@ -1,4 +1,4 @@
-package LeetCode_Easy;
+package LeetCode_Medium;
 
 public class NumberFormation {
 

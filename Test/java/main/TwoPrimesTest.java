@@ -1,6 +1,6 @@
 package java.main;
 
-import LeetCode_Easy.TwoPrimes;
+import LeetCode_Medium.TwoPrimes;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
