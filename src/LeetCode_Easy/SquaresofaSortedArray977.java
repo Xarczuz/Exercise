@@ -22,6 +22,7 @@ public class SquaresofaSortedArray977 {
     }
 
     public static void main(String[] args) {
+
         System.out.println(Arrays.toString(sortedSquares(new int[]{-4, -1, 0, 3, 10})));
     }
 
