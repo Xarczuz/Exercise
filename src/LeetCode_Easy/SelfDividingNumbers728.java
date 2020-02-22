@@ -1,7 +1,6 @@
 package LeetCode_Easy;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class SelfDividingNumbers728 {
@@ -45,19 +44,18 @@ public class SelfDividingNumbers728 {
     }
 
     public static List<Integer> selfDividingNumbers2(int left, int right) {
-        List<Integer> integers = new LinkedList<>();
+        List<Integer> integers = new ArrayList<>();
         for (int i = left; i <= right; i++) {
-            boolean self = false;
+            boolean self = true;
             int nr = i;
             int rest;
             while (nr != 0) {
                 rest = nr % 10;
-                nr /= 10;
                 if (rest == 0 || i % rest != 0) {
                     self = false;
                     break;
                 }
-                self = true;
+                nr /= 10;
             }
             if (self) {
                 integers.add(i);
@@ -66,10 +64,30 @@ public class SelfDividingNumbers728 {
         return integers;
     }
 
+    public static List<Integer> selfDividingNumbers3(int left, int right) {
+        List<Integer> integers = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            if (self(i))
+                integers.add(i);
+        }
+        return integers;
+    }
+
+    private static boolean self(int i) {
+        int nr = i;
+        while (nr != 0) {
+            int rest = nr % 10;
+            if (rest == 0 || i % rest != 0)
+                return false;
+            nr /= 10;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        System.out.println(selfDividingNumbers2(1, 22));
-        System.out.println(selfDividingNumbers2(10, 25));
-        System.out.println(selfDividingNumbers2(500, 612));
+        System.out.println(selfDividingNumbers3(1, 22));
+        System.out.println(selfDividingNumbers3(10, 25));
+        System.out.println(selfDividingNumbers3(500, 612));
 
     }
 }
