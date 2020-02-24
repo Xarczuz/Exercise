@@ -1,6 +1,5 @@
 package LeetCode_Easy;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 
 public class RangeSumofBST938 {
@@ -31,18 +30,12 @@ public class RangeSumofBST938 {
 
     public static int rangeSumBST2(TreeNode root, int L, int R) {
         int sum = 0;
-        int interval = L - R;
         LinkedList<TreeNode> treeNodes = new LinkedList<>();
-        HashSet<Integer> hashSet = new HashSet<>();
         treeNodes.push(root);
         while (!treeNodes.isEmpty()) {
             TreeNode treeNode = treeNodes.pop();
             if (L <= treeNode.val && treeNode.val <= R) {
-                hashSet.add(treeNode.val);
                 sum += treeNode.val;
-                if (hashSet.size() == (interval)) {
-                    break;
-                }
             }
             if (treeNode.right != null) {
                 treeNodes.push(treeNode.right);
