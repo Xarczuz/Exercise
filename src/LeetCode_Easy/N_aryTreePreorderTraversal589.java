@@ -1,23 +1,23 @@
 package LeetCode_Easy;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class N_aryTreePostorderTraversal590 {
-
+public class N_aryTreePreorderTraversal589 {
     public List<Integer> postorder(Node root) {
         if (root == null) {
             return new LinkedList<>();
         }
-        LinkedList<Integer> rArr = new LinkedList<>();
+        List<Integer> rArr = new ArrayList<>();
         Stack<Node> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             root = stack.pop();
             rArr.add(root.val);
-            for (Node n : root.children) {
-                stack.push(n);
+            for (int i = root.children.size() - 1; i >= 0; i--) {
+                stack.push(root.children.get(i));
             }
         }
         return rArr;
@@ -39,4 +39,5 @@ public class N_aryTreePostorderTraversal590 {
             children = _children;
         }
     }
+
 }
