@@ -1,2 +1,4 @@
-# -Övningar
-Övningar
+# -Exercise
+
+My Project Euler and LeetCode solutions
+
