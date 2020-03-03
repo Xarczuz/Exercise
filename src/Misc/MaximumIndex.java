@@ -1,4 +1,4 @@
-package LeetCode_Medium;
+package Misc;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
