@@ -22,17 +22,15 @@ public class SubdomainVisitCount811 {
         int visited = 0;
         int dots = 0;
         int i = 0;
-        for (; i < s.length(); i++) {
-            if (s.charAt(i) == ' ') {
-                String link = s.substring(i + 1);
-                visitedSites.put(link, visitedSites.getOrDefault(link, 0) + visited);
-                break;
-            }
+        while (s.charAt(i) != ' ') {
             visited = visited * 10 + s.charAt(i) - '0';
+            i++;
         }
+        String link = s.substring(i + 1);
+        visitedSites.put(link, visitedSites.getOrDefault(link, 0) + visited);
         for (; i < s.length(); i++) {
             if (s.charAt(i) == '.') {
-                String link = s.substring(i + 1);
+                link = s.substring(i + 1);
                 visitedSites.put(link, visitedSites.getOrDefault(link, 0) + visited);
                 dots++;
                 if (dots == 2) {
