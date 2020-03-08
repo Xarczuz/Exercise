@@ -23,15 +23,24 @@ public class LongestZigZagPathinaBinaryTree1372 {
             boolean left = b;
             while (!treeNodes.isEmpty()) {
                 TreeNode t = treeNodes.pop();
+                if (t.val > 1) {
+                    path += t.val;
+                    break;
+                }
                 if (t.left != null && left) {
                     treeNodes.push(t.left);
                     left = false;
                     path++;
+                    t.val = path;
+                    continue;
                 } else if (t.right != null && !left) {
                     treeNodes.push(t.right);
                     left = true;
                     path++;
+                    t.val = path;
+                    continue;
                 }
+                break;
             }
             return path;
         }
