@@ -1,4 +1,4 @@
-package java.main;
+package main;
 
 import Misc.TwoPrimes;
 import org.junit.jupiter.api.Test;
