@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class LeetCode_20_ValidParentheses {
     public boolean isValid(String s) {
-        if (s.length() == 1) {
+        if (s.length() % 2 != 0) {
             return false;
         }
         Stack<Character> chars = new Stack<>();
