@@ -10,7 +10,6 @@ public class LeetCode_58_LengthofLastWord {
                 }
                 return counter;
             } else {
-
                 counter++;
             }
         }
