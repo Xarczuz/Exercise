@@ -8,8 +8,9 @@ public class LeetCode_1002_FindCommonCharacters {
         int[][] arr = new int[26][A.length]; //97 - 122
 
         for (int i = 0; i < A.length; i++) {
+            char[] chars = A[i].toCharArray();
             for (int j = 0; j < A[i].length(); j++) {
-                arr[A[i].charAt(j) - 97][i]++;
+                arr[chars[j] - 97][i]++;
             }
         }
 
@@ -18,9 +19,13 @@ public class LeetCode_1002_FindCommonCharacters {
         char current = 0;
         while (current < 26) {
             int checker = arr[current][0];
+            if (checker == 0) {
+                current++;
+                continue;
+            }
             int min = Math.min(Integer.MAX_VALUE, checker);
             for (int i = 1; i < A.length; i++) {
-                if (checker != 0 && arr[current][i] != 0) {
+                if (arr[current][i] != 0) {
                     min = Math.min(min, arr[current][i]);
                 } else {
                     min = 0;
