@@ -28,7 +28,6 @@ public class LeetCode_659_BuddyStrings {
                 }
             }
         }
-
         for (int i : zeroSum) {
             if (i > 0) {
                 return false;
