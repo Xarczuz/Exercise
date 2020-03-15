@@ -9,7 +9,7 @@ public class LeetCode_659_BuddyStrings {
             return false;
         }
 
-        if (A.equals(B) && !noTwoLetterThatAreSameInA(A)) {
+        if (A.equals(B) && !areThereTwoLettersThatAreSameIn(A)) {
             return false;
         }
         return areAllCharsTheSame(A.toCharArray(), B.toCharArray());
@@ -37,7 +37,7 @@ public class LeetCode_659_BuddyStrings {
         return true;
     }
 
-    private boolean noTwoLetterThatAreSameInA(String a) {
+    private boolean areThereTwoLettersThatAreSameIn(String a) {
         HashSet<Character> hashSet = new HashSet<>();
         for (char c : a.toCharArray()) {
             if (hashSet.contains(c)) {
