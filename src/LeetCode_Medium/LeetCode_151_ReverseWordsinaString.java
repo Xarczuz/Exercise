@@ -5,6 +5,11 @@ import java.util.Arrays;
 public class LeetCode_151_ReverseWordsinaString {
     public static void main(String[] args) {
         System.out.println(Arrays.toString("a good   example".split(" ")));
+
+        String[] ss = "a good   example".split(" ");
+        for (String s : ss) {
+            System.out.println(s.length());
+        }
     }
 
     public String reverseWords(String s) {
