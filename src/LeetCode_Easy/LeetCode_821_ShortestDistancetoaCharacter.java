@@ -10,11 +10,13 @@ public class LeetCode_821_ShortestDistancetoaCharacter {
     }
 
     public int[] shortestToChar(String S, char C) {
-        int[] arr = new int[S.length()];
-        int[] arr1 = new int[S.length()];
+        int size = S.length();
+        int lastIndex = S.length() - 1;
+        int[] arr = new int[size];
+        int[] arr1 = new int[size];
         char[] chars = S.toCharArray();
         int count = 1;
-        for (int i = 0; i < arr1.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (chars[i] != C) {
                 arr1[i] = count;
                 count++;
@@ -22,22 +24,21 @@ public class LeetCode_821_ShortestDistancetoaCharacter {
                 count = 1;
             }
         }
-        int[] arr2 = new int[S.length()];
+        int[] arr2 = new int[size];
         count = 1;
-        for (int i = arr2.length - 1; i >= 0; i--) {
+        for (int i = lastIndex; i >= 0; i--) {
             if (chars[i] != C) {
                 arr2[i] = count;
+                arr[i] = Math.min(arr1[i], arr2[i]);
                 count++;
             } else {
                 count = 1;
             }
         }
-        for (int i = 0; i < chars.length; i++) {
-            arr[i] = Math.min(arr1[i], arr2[i]);
-        }
+
         if (chars[0] != C) {
             arr[0] = arr2[0];
-            for (int i = 1; i < chars.length; i++) {
+            for (int i = 1; i < size; i++) {
                 if (chars[i] != C) {
                     arr[i] = arr2[i];
                 } else {
@@ -45,9 +46,9 @@ public class LeetCode_821_ShortestDistancetoaCharacter {
                 }
             }
         }
-        if (chars[chars.length - 1] != C) {
-            arr[chars.length - 1] = arr1[chars.length - 1];
-            for (int i = chars.length - 1; i >= 0; i--) {
+        if (chars[lastIndex] != C) {
+            arr[lastIndex] = arr1[lastIndex];
+            for (int i = lastIndex; i >= 0; i--) {
                 if (chars[i] != C) {
                     arr[i] = arr1[i];
                 } else {
