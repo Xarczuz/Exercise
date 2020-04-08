@@ -1,6 +1,7 @@
 package LeetCode_Medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -66,5 +67,14 @@ public class LeetCode_890_FindandReplacePattern {
             prev = c;
         }
         return nrPattern.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "abba";
+        int[] p = new int[s.length()];
+        for (int i = 0; i < p.length; i++) {
+            p[i] = s.charAt(i) - 'a';
+        }
+        System.out.println(Arrays.toString(p));
     }
 }
