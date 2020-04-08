@@ -8,7 +8,7 @@ public class LeetCode_890_FindandReplacePattern {
 
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> resArr = new ArrayList<>();
-        String nrPattern = patternMaker(pattern);
+        int[] nrPattern = patternMaker(pattern);
         for (String w : words) {
             if (havePattern(nrPattern, patternMaker(w))) {
                 resArr.add(w);
@@ -17,24 +17,38 @@ public class LeetCode_890_FindandReplacePattern {
         return resArr;
     }
 
-    private boolean havePattern(String nrPattern, String w) {
-        if (nrPattern.length() < w.length()) {
-            for (int i = 0; i < nrPattern.length(); i++) {
-                if (nrPattern.charAt(i) != w.charAt(i)) {
-                    return false;
-                }
-            }
-        } else {
-            for (int i = 0; i < w.length(); i++) {
-                if (nrPattern.charAt(i) != w.charAt(i)) {
-                    return false;
-                }
+    private boolean havePattern(int[] nrPattern, int[] w) {
+        for (int i = 0; i < nrPattern.length; i++) {
+            if (nrPattern[i] != w[i]) {
+                return false;
             }
         }
         return true;
     }
 
-    private String patternMaker(String pattern) {
+    private int[] patternMaker(String pattern) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int nr = 0;
+        int[] nrPattern = new int[pattern.length()];
+        char prev = 0;
+        char[] charArray = pattern.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            char c = charArray[i];
+            if (map.containsKey(c)) {
+                nrPattern[i] = map.get(c);
+            } else if (c != prev) {
+                nr++;
+                nrPattern[i] = nr;
+                map.put(c, nr);
+            } else {
+                nrPattern[i] = nr;
+            }
+            prev = c;
+        }
+        return nrPattern;
+    }
+
+    private String patternMaker2(String pattern) {
         HashMap<Character, Integer> map = new HashMap<>();
         int nr = 0;
         StringBuilder nrPattern = new StringBuilder();
@@ -53,5 +67,4 @@ public class LeetCode_890_FindandReplacePattern {
         }
         return nrPattern.toString();
     }
-
 }
