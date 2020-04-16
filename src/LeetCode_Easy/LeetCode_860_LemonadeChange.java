@@ -9,31 +9,24 @@ public class LeetCode_860_LemonadeChange {
         int five = 0;
         int ten = 0;
         for (int bill : bills) {
-            switch (bill) {
-                case 5:
-                    five++;
-                    break;
-                case 10:
-                    ten++;
+            if (bill == 5) {
+                five++;
+            } else if (bill == 10) {
+                ten++;
+                five--;
+                if (five < 0) {
+                    return false;
+                }
+            } else {
+                if (ten > 0) {
+                    ten--;
                     five--;
-                    if (five < 0) {
-                        return false;
-                    }
-                    break;
-                case 20:
-                    if (five > 0 && ten > 0) {
-                        ten--;
-                        five--;
-                        if (five < 0 || ten < 0) {
-                            return false;
-                        }
-                    } else {
-                        five -= 3;
-                        if (five < 0) {
-                            return false;
-                        }
-                    }
-                    break;
+                } else {
+                    five -= 3;
+                }
+                if (five < 0) {
+                    return false;
+                }
             }
         }
         return true;
