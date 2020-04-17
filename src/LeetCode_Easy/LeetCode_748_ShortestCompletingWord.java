@@ -47,5 +47,4 @@ public class LeetCode_748_ShortestCompletingWord {
         }
         return closesMatch;
     }
-
 }
