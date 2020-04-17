@@ -2,7 +2,8 @@ package LeetCode_Easy;
 
 public class LeetCode_788_RotatedDigits {
     public static void main(String[] args) {
-        System.out.println(new LeetCode_788_RotatedDigits().rotatedDigits(20));
+        System.out.println(new LeetCode_788_RotatedDigits().rotatedDigits(50));
+        //16
     }
 
     public int rotatedDigits(int N) {
@@ -12,21 +13,18 @@ public class LeetCode_788_RotatedDigits {
             boolean flag = true;
             int n = i;
             int n2 = 0;
-            int n3 = 0;
+            int ten = 1;
             while (n != 0) {
                 int r = n % 10;
                 if (map[r] < 0) {
                     flag = false;
                     break;
                 }
-                n3 *= 10;
-                n3 += r;
-                n2 *= 10;
-                n2 += map[r];
+                n2 = (map[r] * ten) + n2;
+                ten *= 10;
                 n /= 10;
             }
-            if (flag && n2 != n3) {
-//                System.out.println(n2 + " " + i);
+            if (flag && i != n2) {
                 count++;
             }
         }
