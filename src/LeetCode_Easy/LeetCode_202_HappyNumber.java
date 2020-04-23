@@ -17,7 +17,7 @@ public class LeetCode_202_HappyNumber {
                 t += r * r;
                 f /= 10;
             }
-            if (n == 1) {
+            if (t == 1) {
                 return true;
             }
             if (hashSet.contains(t)) {
