@@ -22,9 +22,6 @@ public class LeetCode_763_PartitionLabels {
     }
 
     public String partition(String S, int highestIndex, char[] chars, HashSet<Character> characters, ArrayList<Integer> arrayList) {
-        if (S.length() == 0) {
-            return "";
-        }
         characters.clear();
         char zero = chars[highestIndex];
         int lastIndexOfZero = S.lastIndexOf(zero);
