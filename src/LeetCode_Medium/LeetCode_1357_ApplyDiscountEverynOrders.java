@@ -9,7 +9,7 @@ public class LeetCode_1357_ApplyDiscountEverynOrders {
         private final int n;
         private final double discount;
         private final HashMap<Integer, Integer> productsMap;
-        int counter = 0;
+        int counter;
 
         public Cashier(int n, int discount, int[] products, int[] prices) {
             this.n = n;
@@ -19,7 +19,7 @@ public class LeetCode_1357_ApplyDiscountEverynOrders {
                 productsMap.put(products[i], prices[i]);
             }
             this.productsMap = productsMap;
-
+            this.counter = 0;
         }
 
         public double getBill(int[] product, int[] amount) {
