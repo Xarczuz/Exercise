@@ -7,9 +7,12 @@ public class Permutations {
 
 	public static void main(String[] args) {
 
+		org.add(0);
 		org.add(1);
-		org.add(7);
-		org.add(9);
+		org.add(2);
+		org.add(3);
+
+		permutaion();
 
 	}
 	public static ArrayList<Integer> org = new ArrayList<>();
