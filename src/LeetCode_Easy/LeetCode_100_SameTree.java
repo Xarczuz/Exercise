@@ -43,6 +43,27 @@ public class LeetCode_100_SameTree {
         return true;
     }
 
+    public boolean isSameTree2(TreeNode p, TreeNode q) {
+        Stack<TreeNode> treeNodeStack = new Stack<>();
+        treeNodeStack.push(p);
+        treeNodeStack.push(q);
+        while (!treeNodeStack.empty()) {
+            p = treeNodeStack.pop();
+            q = treeNodeStack.pop();
+            if (p == null && q == null) {
+                continue;
+            }
+            if (p == null || q == null || p.val != q.val) {
+                return false;
+            }
+            treeNodeStack.push(p.left);
+            treeNodeStack.push(q.left);
+            treeNodeStack.push(p.right);
+            treeNodeStack.push(q.right);
+        }
+        return true;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;
