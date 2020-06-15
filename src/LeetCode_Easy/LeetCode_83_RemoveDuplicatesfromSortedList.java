@@ -23,7 +23,7 @@ public class LeetCode_83_RemoveDuplicatesfromSortedList {
 
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null) {
-            return null;
+            return head;
         }
         ListNode a = head;
         ListNode temp;
@@ -46,7 +46,7 @@ public class LeetCode_83_RemoveDuplicatesfromSortedList {
                     }
                 }
                 if (a == null) {
-                    temp.next = a;
+                    temp.next = null;
                     break;
                 }
             }
