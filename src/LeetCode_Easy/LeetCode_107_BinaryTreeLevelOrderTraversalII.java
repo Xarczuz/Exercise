@@ -1,7 +1,6 @@
 package LeetCode_Easy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -16,13 +15,15 @@ public class LeetCode_107_BinaryTreeLevelOrderTraversalII {
         Stack<Integer> treeNodesDepth = new Stack<>();
         treeNodes.push(root);
         treeNodesDepth.add(1);
+        int maxDepth = 0;
         while (!treeNodes.isEmpty()) {
             TreeNode current = treeNodes.pop();
             int depth = treeNodesDepth.pop();
+            maxDepth = Math.max(depth, maxDepth);
             if (depth > lists.size()) {
-                lists.add(new ArrayList<>());
+                lists.add(0, new ArrayList<>());
             }
-            lists.get(depth - 1).add(current.val);
+            lists.get(maxDepth - depth).add(current.val);
             if (current.right != null) {
                 treeNodesDepth.push(depth + 1);
                 treeNodes.push(current.right);
@@ -32,7 +33,6 @@ public class LeetCode_107_BinaryTreeLevelOrderTraversalII {
                 treeNodes.push(current.left);
             }
         }
-        Collections.reverse(lists);
         return lists;
     }
 
