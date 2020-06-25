@@ -8,6 +8,22 @@ public class LeetCode_141_LinkedListCycle {
         if (head == null) {
             return false;
         }
+        int visited = Integer.MIN_VALUE + 37;
+        head.val = visited;
+        while (head.next != null) {
+            head = head.next;
+            if (head.val == visited) {
+                return true;
+            }
+            head.val = visited;
+        }
+        return false;
+    }
+
+    public boolean hasCycle2(ListNode head) {
+        if (head == null) {
+            return false;
+        }
         HashSet<VisitedNode> visitedNodes = new HashSet<>();
         ListNode node = head;
         visitedNodes.add(new VisitedNode(node));
