@@ -13,10 +13,10 @@ public class LeetCode_112_PathSum {
         while (!nodes.isEmpty()) {
             Node node = nodes.pop();
             if (node.node.left != null) {
-                nodes.push(new Node(node.sum + node.node.left.val, node.node.left));
+                nodes.addFirst(new Node(node.sum + node.node.left.val, node.node.left));
             }
             if (node.node.right != null) {
-                nodes.push(new Node(node.sum + node.node.right.val, node.node.right));
+                nodes.addFirst(new Node(node.sum + node.node.right.val, node.node.right));
             }
             if (node.node.left == null && node.node.right == null && node.sum == sum) {
                 return true;
