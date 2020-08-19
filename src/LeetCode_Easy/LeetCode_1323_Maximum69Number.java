@@ -6,7 +6,7 @@ public class LeetCode_1323_Maximum69Number {
         stringBuilder.append(num);
         for (int i = 0; i < stringBuilder.length(); i++) {
             if (stringBuilder.substring(i, i + 1).equals("6")) {
-                stringBuilder = stringBuilder.replace(i, i + 1, "9");
+                stringBuilder.replace(i, i + 1, "9");
                 return Integer.parseInt(stringBuilder.toString());
             }
         }
