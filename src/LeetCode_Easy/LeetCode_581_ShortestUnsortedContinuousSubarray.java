@@ -40,7 +40,7 @@ public class LeetCode_581_ShortestUnsortedContinuousSubarray {
             end--;
         }
 
-        // System.out.println(start + "-" + end);
+        System.out.println(start + "-" + end);
         if (end == 0 && start == 0) {
             return 0;
         }
@@ -56,5 +56,24 @@ public class LeetCode_581_ShortestUnsortedContinuousSubarray {
         System.out.println(findUnsortedSubarray2(new int[]{1, 3, 2, 1}));
         System.out.println(findUnsortedSubarray2(new int[]{1, 3, 3, 3}));
         System.out.println(findUnsortedSubarray2(new int[]{1, 3, 2, 1, 1, 3, 2, 55, 99, 55}));
+        System.out.println(findUnsortedSubarray2(new int[]{1, 2, 3, 4, 5}));
+//        0-1
+//        2
+//        0-0
+//        0
+//        0-0
+//        0
+//        0-0
+//        0
+//        0-2
+//        3
+//        1-3
+//        3
+//        0-0
+//        0
+//        1-9
+//        9
+//        0-0
+//        0
     }
 }
