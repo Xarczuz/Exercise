@@ -4,16 +4,15 @@ public class LeetCode_1189_MaximumNumberofBalloons {
 
     public int maxNumberOfBalloons(String text) {
         char[] chars = new char[26];
-        char[] charText = text.toCharArray();
-        for (char c : charText) {
+        for (char c : text.toCharArray()) {
             chars[c - 'a']++;
         }
         int min = Integer.MAX_VALUE;
         min = Math.min(chars[0], min);
-        min = Math.min(chars['b' - 'a'], min);
-        min = Math.min(chars['l' - 'a'] / 2, min);
-        min = Math.min(chars['o' - 'a'] / 2, min);
-        min = Math.min(chars['n' - 'a'], min);
+        min = Math.min(chars[1], min);
+        min = Math.min(chars[11] / 2, min);
+        min = Math.min(chars[13], min);
+        min = Math.min(chars[14] / 2, min);
         return min;
     }
 }
