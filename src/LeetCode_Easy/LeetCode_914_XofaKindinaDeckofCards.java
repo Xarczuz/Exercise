@@ -25,7 +25,20 @@ public class LeetCode_914_XofaKindinaDeckofCards {
         return false;
     }
 
-   static public int gcd(int divisor, int value) {
+    static public boolean hasGroupsSizeX2(int[] deck) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int value : deck) {
+            hashMap.put(value, hashMap.getOrDefault(value, 0) + 1);
+        }
+        int divisor = 0;
+        for (int value : hashMap.values()) {
+            divisor = gcd(divisor, value);
+        }
+        return divisor != 1;
+
+    }
+
+    static public int gcd(int divisor, int value) {
         if (value == 0) {
             return divisor;
         } else {
@@ -34,11 +47,10 @@ public class LeetCode_914_XofaKindinaDeckofCards {
     }
 
     public static void main(String[] args) {
-        System.out.println(gcd(0,14));
-        System.out.println(gcd(14,28));
+        System.out.println(gcd(0, 14));
+        System.out.println(gcd(14, 28));
 
-
-       // hasGroupsSizeX(new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2});
-      //  hasGroupsSizeX(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2});
+        // hasGroupsSizeX(new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2});
+        //  hasGroupsSizeX(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2});
     }
 }
