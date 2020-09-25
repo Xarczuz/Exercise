@@ -16,15 +16,10 @@ public class LeetCode_189_RotateArray {
 
     public static void main(String[] args) {
         rotate(new int[]{1, 2, 3, 4, 5, 6, 7}, 3);
-        rotate(new int[]{1, 2, 3, 4, 5, 6}, 2); // 3,99,-1,-100
+        rotate(new int[]{1, 2, 3, 4, 5, 6}, 2);
 
     }
 }
-//[1,2,3,4,5,6,7]
-//[5,6,7,1,2,3,4]
-//
-//
-
 
 
 
