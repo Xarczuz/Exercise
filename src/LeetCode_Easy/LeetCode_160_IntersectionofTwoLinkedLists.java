@@ -22,7 +22,7 @@ public class LeetCode_160_IntersectionofTwoLinkedLists {
             headA = headA.next;
         }
         while (headB != null) {
-            if (!listNodes.add(headB)) {
+            if (listNodes.contains(headB)) {
                 return headB;
             }
             headB = headB.next;
