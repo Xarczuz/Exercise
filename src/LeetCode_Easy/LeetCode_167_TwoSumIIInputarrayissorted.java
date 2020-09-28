@@ -55,4 +55,17 @@ public class LeetCode_167_TwoSumIIInputarrayissorted {
         }
         return new int[]{index1 + 1, index2 + 1};
     }
+
+    public int[] twoSum3(int[] numbers, int target) {
+        int lo = 0, hi = numbers.length - 1;
+
+        while (lo < hi) {
+            int res = numbers[lo] + numbers[hi];
+
+            if (res == target) return new int[]{lo + 1, hi + 1};
+            if (res < target) lo++;
+            else hi--;
+        }
+        return new int[]{-1, -1};
+    }
 }
