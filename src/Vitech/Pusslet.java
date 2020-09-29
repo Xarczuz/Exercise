@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Pusslet {
 //    pusselenkel.txt // indata.txt
@@ -22,14 +23,26 @@ public class Pusslet {
 //    IRRU
 
     public static void main(String[] args) throws IOException {
-        // ArrayList<String> arr = readFile("./src/Vitech/supersimpletestcase.txt");
-        ArrayList<String> arr = readFile("./src/Vitech/pusselMedel.txt");
-
-        //  ArrayList<String> arr = readFile("./src/Vitech/indata.txt");
+//         ArrayList<String> arr = readFile("./src/Vitech/supersimpletestcase.txt");
+//        ArrayList<String> arr = readFile("./src/Vitech/pusselMedel.txt");
+//
+        ArrayList<String> arr = readFile("./src/Vitech/indata.txt");
 
 //        ArrayList<String> arr = readFile("./src/Vitech/pusselenkel.txt");
-        int sizeOfMatrix = Integer.parseInt(arr.remove(0));
-        String[][] matrix = new String[sizeOfMatrix][sizeOfMatrix];
+
+        arr.remove(0);
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i).charAt(0) == 'R') {
+                x++;
+            }
+            if (arr.get(i).charAt(1) == 'R') {
+                y++;
+            }
+        }
+
+        String[][] matrix = new String[y][x];
 
         for (int i = 0; i < arr.size(); i++) {
             String s = arr.get(i);
@@ -46,7 +59,7 @@ public class Pusslet {
 
     private static void printMatrix(String[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(" " + matrix[i][j]);
             }
             System.out.println();
@@ -54,12 +67,25 @@ public class Pusslet {
         System.out.println();
     }
 
+    static int counter = 0;
+
     private static int findSolutions(String puzzleInPlace, String[][] matrix, int x, int y, ArrayList<String> arr) {
 
-        int total = 0;
-        printMatrix(matrix);
+        // counter++;
+//        if (matrix[0][1] != null && matrix[0][2] != null && matrix[0][3] != null && matrix[0][4] != null) {
+//
+//            System.out.println(arr);
+//            printMatrix(matrix);
+//        }
+//        if (arr.size() > 8) {
+//            System.out.println(arr);
+//            printMatrix(matrix);
+//        }
         System.out.println(arr);
-        if (arr.size() == 1) {
+        printMatrix(matrix);
+        int total = 0;
+
+        if (arr.size() == 0) {
             return 1;
         }
 
@@ -69,51 +95,80 @@ public class Pusslet {
             String s = puzzleMatch(puzzleInPlace, puzzleToPlace, matrix, x, y);
             if (s.equals("east")) {
                 ArrayList<String> clone = new ArrayList<>(arr);
-                clone.remove(i);
-                String[][] matrixClone = matrix.clone();
+                clone.remove(puzzleToPlace);
+
+                String[][] matrixClone = Arrays.stream(matrix).map(String[]::clone).toArray(String[][]::new);
+
                 matrixClone[y][x + 1] = puzzleToPlace;
-                total += findSolutions(puzzleToPlace, matrixClone, x + 1, y, clone);
 
-            } else if (s.equals("south")) {
-                ArrayList<String> clone = new ArrayList<>(arr);
-                clone.remove(i);
-                String[][] matrixClone = matrix.clone();
-                matrixClone[y + 1][x] = puzzleToPlace;
-                total += findSolutions(puzzleToPlace, matrixClone, x, y + 1, clone);
+                if (x + 1 == matrix[0].length - 1) {
+                    total += findSolutions("", matrixClone, 0, y + 1, clone);
 
-            } else if (s.equals("west")) {
-                ArrayList<String> clone = new ArrayList<>(arr);
-                clone.remove(i);
-                String[][] matrixClone = matrix.clone();
-                matrixClone[y][x - 1] = puzzleToPlace;
-                total += findSolutions(puzzleToPlace, matrixClone, x - 1, y, clone);
+                } else {
 
-            } else if (s.equals("north")) {
+                    total += findSolutions(puzzleToPlace, matrixClone, x + 1, y, clone);
+                }
+
+            } else if (s.equals("emptySpot")) {
                 ArrayList<String> clone = new ArrayList<>(arr);
-                clone.remove(i);
-                String[][] matrixClone = matrix.clone();
-                matrixClone[y - 1][x] = puzzleToPlace;
-                total += findSolutions(puzzleToPlace, matrixClone, x, y - 1, clone);
+                clone.remove(puzzleToPlace);
+                String[][] matrixClone = Arrays.stream(matrix).map(String[]::clone).toArray(String[][]::new);
+                matrixClone[y][x] = puzzleToPlace;
+                total += findSolutions(puzzleToPlace, matrixClone, x, y, clone);
 
             }
 
+//            else if (s.equals("south")) {
+//                ArrayList<String> clone = new ArrayList<>(arr);
+//                clone.remove(puzzleToPlace);
+//                String[][] matrixClone = Arrays.stream(matrix).map(String[]::clone).toArray(String[][]::new);
+//
+//                matrixClone[y + 1][x] = puzzleToPlace;
+//                total += findSolutions(puzzleToPlace, matrixClone, x, y + 1, clone);
+//
+//            } else if (s.equals("west")) {
+//                ArrayList<String> clone = new ArrayList<>(arr);
+//                clone.remove(puzzleToPlace);
+//                String[][] matrixClone = Arrays.stream(matrix).map(String[]::clone).toArray(String[][]::new);
+//                matrixClone[y][x - 1] = puzzleToPlace;
+//                total += findSolutions(puzzleToPlace, matrixClone, x - 1, y, clone);
+//
+//            } else if (s.equals("north")) {
+//                ArrayList<String> clone = new ArrayList<>(arr);
+//                clone.remove(puzzleToPlace);
+//                String[][] matrixClone = Arrays.stream(matrix).map(String[]::clone).toArray(String[][]::new);
+//                matrixClone[y - 1][x] = puzzleToPlace;
+//                total += findSolutions(puzzleToPlace, matrixClone, x, y - 1, clone);
+//            }
+
         }
+
         return total;
     }
 
     private static String puzzleMatch(String puzzleInPlace, String puzzleToPlace, String[][] matrix, int x, int y) {
-
-        if (matchNorth(puzzleInPlace, puzzleToPlace)) {
-            y--;
-            //north east west
-            if (y >= 0 && x >= 0 && matrix[y][x] == null) {
+        if (puzzleInPlace.equals("")) {
+            if (matrix[y][x] == null) {
+                //north east south
                 if (y - 1 >= 0) {
                     if (!matchNorth(puzzleToPlace, matrix[y - 1][x])) {
                         return "";
                     }
                 }
-                if (x + 1 < matrix.length) {
+                return "emptySpot";
+            }
+        }
 
+        if (matchNorth(puzzleInPlace, puzzleToPlace)) {
+            y--;
+            //north east west
+            if (y >= 0 && x >= 0 && y < matrix.length && x < matrix[0].length && matrix[y][x] == null) {
+                if (y - 1 >= 0) {
+                    if (!matchNorth(puzzleToPlace, matrix[y - 1][x])) {
+                        return "";
+                    }
+                }
+                if (x + 1 < matrix[0].length) {
                     if (!matchEast(puzzleToPlace, matrix[y][x + 1])) {
                         return "";
                     }
@@ -130,14 +185,15 @@ public class Pusslet {
 
         if (matchEast(puzzleInPlace, puzzleToPlace)) {
             x++;
-            if (y >= 0 && x >= 0 && matrix[y][x] == null) {
+
+            if (y >= 0 && x >= 0 && y < matrix.length && x < matrix[0].length && matrix[y][x] == null) {
                 //north east south
                 if (y - 1 >= 0) {
                     if (!matchNorth(puzzleToPlace, matrix[y - 1][x])) {
                         return "";
                     }
                 }
-                if (x + 1 < matrix.length) {
+                if (x + 1 < matrix[0].length) {
                     if (!matchEast(puzzleToPlace, matrix[y][x + 1])) {
                         return "";
                     }
@@ -155,13 +211,13 @@ public class Pusslet {
         if (matchSouth(puzzleInPlace, puzzleToPlace)) {
             y++;
             // east south west
-            if (y >= 0 && x >= 0 && matrix[y][x] == null) {
+            if (y >= 0 && x >= 0 && y < matrix.length && x < matrix[0].length && matrix[y][x] == null) {
                 if (x - 1 >= 0) {
                     if (!matchWest(puzzleToPlace, matrix[y][x - 1])) {
                         return "";
                     }
                 }
-                if (x + 1 < matrix.length) {
+                if (x + 1 < matrix[0].length) {
                     if (!matchEast(puzzleToPlace, matrix[y][x + 1])) {
                         return "";
                     }
@@ -178,7 +234,7 @@ public class Pusslet {
         if (matchWest(puzzleInPlace, puzzleToPlace)) {
             y++;
             // north south west
-            if (y >= 0 && x >= 0 && matrix[y][x] == null) {
+            if (y >= 0 && x >= 0 && y < matrix.length && x < matrix[0].length && matrix[y][x] == null) {
                 if (x - 1 >= 0) {
                     if (!matchWest(puzzleToPlace, matrix[y][x - 1])) {
                         return "";
