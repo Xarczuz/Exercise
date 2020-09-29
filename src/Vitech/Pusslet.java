@@ -81,8 +81,10 @@ public class Pusslet {
 //            System.out.println(arr);
 //            printMatrix(matrix);
 //        }
-        System.out.println(arr);
-        printMatrix(matrix);
+        if (matrix[2][1] != null && matrix[2][1].equals("UUUU")) {//TODO FIX WRONG DIRECTION GOING WEST SHOULD OG EAST DEBUG FIND OUT WIN
+            System.out.println(arr);
+            printMatrix(matrix);
+        }
         int total = 0;
 
         if (arr.size() == 0) {
