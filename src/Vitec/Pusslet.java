@@ -1,4 +1,4 @@
-package Vitech;
+package Vitec;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +21,9 @@ public class Pusslet {
 
         ArrayList<String> arr = readFile(filename);
         String[][] matrix = findSizeOfPuzzle(arr);
-
+        if (arr.size() == 1) {
+            return 1;
+        }
         for (int i = 0; i < arr.size(); i++) {
             String s = arr.get(i);
             if (s.charAt(0) == 'R' && s.charAt(3) == 'R') {
