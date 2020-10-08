@@ -13,8 +13,7 @@ public class LeetCode_874_WalkingRobotSimulation {
         for (int command : commands) {
             if (command < 0) {
                 heading = getHeading(heading, command);
-            }
-            if (command > 0) {
+            } else {
                 movement:
                 for (int i = 0; i < command; i++) {
                     switch (heading) {
@@ -74,7 +73,7 @@ public class LeetCode_874_WalkingRobotSimulation {
                 case 3://West
                     return 2;
             }
-        } else if (command == -1) {
+        } else {
             switch (heading) {
                 case 0:
                     return 1;
