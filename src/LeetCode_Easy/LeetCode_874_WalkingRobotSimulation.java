@@ -74,7 +74,7 @@ public class LeetCode_874_WalkingRobotSimulation {
                 case 3://West
                     return 2;
             }
-        } else {
+        } else if (command == -1) {
             switch (heading) {
                 case 0:
                     return 1;
