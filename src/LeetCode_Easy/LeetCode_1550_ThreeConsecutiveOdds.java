@@ -7,11 +7,11 @@ public class LeetCode_1550_ThreeConsecutiveOdds {
         for (int i : arr) {
             if (i % 2 != 0) {
                 counter++;
+                if (counter == 3) {
+                    return true;
+                }
             } else {
                 counter = 0;
-            }
-            if (counter == 3) {
-                return true;
             }
         }
         return false;
