@@ -89,8 +89,8 @@ public class LeetCode_874_WalkingRobotSimulation {
     }
 
     private static class Pair<T, T1> {
-        int x;
-        int y;
+        private final int x;
+        private final int y;
 
         public Pair(int x, int y) {
             this.x = x;
