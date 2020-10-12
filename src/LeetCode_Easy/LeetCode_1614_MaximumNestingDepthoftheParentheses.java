@@ -7,10 +7,10 @@ public class LeetCode_1614_MaximumNestingDepthoftheParentheses {
         for (char c : s.toCharArray()) {
             if (c == '(') {
                 counter++;
+                max = Math.max(counter, max);
             } else if (c == ')') {
                 counter--;
             }
-            max = Math.max(counter, max);
         }
         return max;
     }
