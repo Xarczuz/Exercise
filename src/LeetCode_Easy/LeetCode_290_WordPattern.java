@@ -14,14 +14,10 @@ public class LeetCode_290_WordPattern {
         int j = 0;
         HashMap<Character, String> map = new HashMap<>();
         for (char c : pattern.toCharArray()) {
-            if (map.containsKey(c) && !map.get(c).equals(strings[j])) {
+            if (map.containsKey(c) && !map.get(c).equals(strings[j]) || !map.containsKey(c) && map.containsValue(strings[j])) {
                 return false;
             } else {
-                if (!map.containsKey(c) && map.containsValue(strings[j])) {
-                    return false;
-                } else {
-                    map.put(c, strings[j]);
-                }
+                map.put(c, strings[j]);
             }
             j++;
         }
