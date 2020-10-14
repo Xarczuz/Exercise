@@ -8,5 +8,6 @@ public class LeetCode_367_ValidPerfectSquare {
         }
         double d = Math.sqrt(num);
         return d - Math.floor(d) == 0;
+
     }
 }
