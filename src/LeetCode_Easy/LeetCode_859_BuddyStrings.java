@@ -11,7 +11,7 @@ public class LeetCode_859_BuddyStrings {
         char[] charsB = B.toCharArray();
         int[] letters = new int[26];
         boolean twoLetters = false;
-        for (int i = 0; i < A.length(); i++) {
+        for (int i = 0, len = A.length(); i < len; i++) {
             if (charsA[i] != charsB[i]) {
                 if (ai == -1) {
                     ai = i;
@@ -19,7 +19,7 @@ public class LeetCode_859_BuddyStrings {
                     return swapLetterAtIndex(A, B, ai, i);
                 }
             }
-            if (++letters[charsA[i] - 'a'] == 2) {
+            if (!twoLetters && ++letters[charsA[i] - 'a'] == 2) {
                 twoLetters = true;
             }
         }
@@ -38,7 +38,7 @@ public class LeetCode_859_BuddyStrings {
         if (charsA[i1] != charsB[i1]) {
             return false;
         }
-        for (int j = i2; j < charsA.length; j++) {
+        for (int j = i2, len = a.length(); j < len; j++) {
             if (charsA[j] != charsB[j]) {
                 return false;
             }
