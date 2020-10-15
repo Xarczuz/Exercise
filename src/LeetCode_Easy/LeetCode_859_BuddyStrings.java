@@ -16,7 +16,7 @@ public class LeetCode_859_BuddyStrings {
                 if (ai == -1) {
                     ai = i;
                 } else {
-                    return swapLetterAtIndex(A, B, ai, i);
+                    return swapLetterAtIndex(charsA, charsB, ai, i);
                 }
             }
             if (!twoLetters && ++letters[charsA[i] - 'a'] == 2) {
@@ -29,16 +29,14 @@ public class LeetCode_859_BuddyStrings {
         return false;
     }
 
-    private boolean swapLetterAtIndex(String a, String b, int i1, int i2) {
-        char[] charsA = a.toCharArray();
-        char[] charsB = b.toCharArray();
+    private boolean swapLetterAtIndex(char[] charsA, char[] charsB, int i1, int i2) {
         char temp = charsA[i1];
         charsA[i1] = charsA[i2];
         charsA[i2] = temp;
         if (charsA[i1] != charsB[i1]) {
             return false;
         }
-        for (int j = i2, len = a.length(); j < len; j++) {
+        for (int j = i2, len = charsA.length; j < len; j++) {
             if (charsA[j] != charsB[j]) {
                 return false;
             }
