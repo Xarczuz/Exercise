@@ -53,14 +53,21 @@ public class SuDoku {
         }
 
         int[][] solvedSudoku = sudokuStack.pop();
-        return Integer.parseInt(solvedSudoku[0][0] + "" + solvedSudoku[0][1] + "" + solvedSudoku[0][2]);
+        StringBuilder st = new StringBuilder();
+        st.append(solvedSudoku[0][0]);
+        st.append(solvedSudoku[0][1]);
+        st.append(solvedSudoku[0][2]);
+        return Integer.parseInt(st.toString());
     }
 
     private static boolean tryToPlaceNrInMatrix(int[][] sudokuToTry, int i, int j, int k) {
         if (checkLinesForDupes(sudokuToTry, i, j, k)) {
             return false;
         }
-        return !checkSquaresForDupe(sudokuToTry, i, j, k);
+        if (checkSquaresForDupe(sudokuToTry, i, j, k)) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean checkLinesForDupes(int[][] sudokuToTry, int i, int j, int k) {
