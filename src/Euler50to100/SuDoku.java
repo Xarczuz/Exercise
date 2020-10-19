@@ -1,5 +1,7 @@
 package Euler50to100;
 
+import Euler1to50.Timer;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -17,14 +19,13 @@ import java.util.LinkedList;
 public class SuDoku {
 
     public static void main(String[] args) throws IOException {
-
         int sum = 0;
+        Timer t = new Timer();
         for (int[][] sud : getSudoku()) {
             sum += solveSudokuBruteForce(sud);
         }
-
+        t.time();
         System.out.println("Project Euler problem 96 fifty sudoku top corner 3 numbers sum: " + sum);
-
     }
 
     private static int solveSudokuBruteForce(int[][] sudoku) {
@@ -33,7 +34,6 @@ public class SuDoku {
         int i = 0, j = 0;
         while (j < 9) {
             int[][] sudokuToTry = sudokuStack.pop();
-
             if (sudokuToTry[j][i] == 0) {
                 for (int k = 1; k <= 9; k++) {
                     if (tryToPlaceNrInMatrix(sudokuToTry, i, j, k)) {
@@ -46,7 +46,6 @@ public class SuDoku {
                 sudokuStack.addLast(sudokuToTry);
                 i++;
             }
-
             if (i > 8) {
                 i = 0;
                 j++;
@@ -54,15 +53,10 @@ public class SuDoku {
         }
 
         int[][] solvedSudoku = sudokuStack.pop();
-//        System.out.println(sudokuStack.size());
-//        printMatrix(sudoku);
-//        System.out.println();
-//        printMatrix(solvedSudoku);
-        return Integer.parseInt(solvedSudoku[0][0] +""+ solvedSudoku[0][1] +""+ solvedSudoku[0][2]);
+        return Integer.parseInt(solvedSudoku[0][0] + "" + solvedSudoku[0][1] + "" + solvedSudoku[0][2]);
     }
 
     private static boolean tryToPlaceNrInMatrix(int[][] sudokuToTry, int i, int j, int k) {
-
         if (checkLinesForDupes(sudokuToTry, i, j, k)) {
             return false;
         }
@@ -132,20 +126,16 @@ public class SuDoku {
                     return true;
                 }
             }
-
         }
         return false;
     }
 
-
     private static ArrayList<int[][]> getSudoku() throws IOException {
-
         File file = new File(Paths.get("./src/Euler50to100/p096_sudoku.txt").toFile().getPath());
         BufferedReader br;
         br = new BufferedReader(new FileReader(file));
         ArrayList<int[][]> arr = new ArrayList<>();
         String st;
-
         while ((br.readLine()) != null) {
             int[][] sudoku = new int[9][9];
             for (int i = 0; i < 9; i++) {
