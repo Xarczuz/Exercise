@@ -148,7 +148,7 @@ public class SuDoku {
             for (int i = 0; i < 9; i++) {
                 st = br.readLine();
                 for (int j = 0; j < 9; j++) {
-                    sudoku[i][j] = Integer.parseInt(st.subSequence(j, j + 1).toString());
+                    sudoku[i][j] = (char)(st.charAt(j)-'0');
                 }
             }
             arr.add(sudoku);
