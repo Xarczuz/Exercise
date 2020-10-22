@@ -7,8 +7,8 @@ public class LeetCode_1037_ValidBoomerang {
     }
 
     public static void main(String[] args) {
-        System.out.println(isBoomerang(new int[][]{{1, 1}, {2, 2}, {3, 3}}));
-        System.out.println(isBoomerang(new int[][]{{2, 1}, {4, 2}, {16, 8}}));
+        System.out.println(isBoomerang(new int[][]{{1, 1}, {0, 0}, {3, 3}}));
+        System.out.println(isBoomerang(new int[][]{{4, 2},{2, 1},  {16, 8}}));
         System.out.println(isBoomerang(new int[][]{{0, 0}, {0, 2}, {2, 1}}));
     }
 }
