@@ -2,24 +2,17 @@ package LeetCode_Easy;
 
 public class LeetCode_724_FindPivotIndex {
     public int pivotIndex(int[] nums) {
-        if (nums.length == 0) {
-            return -1;
-        }
-        if (nums.length == 1) {
-            return 0;
-        }
-        int sum = 0;
+        int left = 0, right = 0;
         for (int num : nums) {
-            sum += num;
+            right += num;
         }
-        int left = 0;
-        int right = sum;
-        for (int i = 0; i < nums.length; i++) {
-            right -= nums[i];
+        for (int i = 0, length = nums.length; i < length; i++) {
+            int nr = nums[i];
+            right -= nr;
             if (left == right) {
                 return i;
             }
-            left += nums[i];
+            left += nr;
         }
         return -1;
     }
