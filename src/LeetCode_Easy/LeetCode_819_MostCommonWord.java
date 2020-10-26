@@ -18,7 +18,7 @@ public class LeetCode_819_MostCommonWord {
                 st.append(c);
             } else if (c >= 'A' && c <= 'Z') {
                 st.append((char) (c + 32));
-            } else {
+            } else if (st.length() != 0) {
                 wordMapper.put(st.toString(), wordMapper.getOrDefault(st.toString(), 0) + 1);
                 st = new StringBuilder();
             }
