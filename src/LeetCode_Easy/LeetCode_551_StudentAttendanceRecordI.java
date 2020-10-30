@@ -4,20 +4,21 @@ public class LeetCode_551_StudentAttendanceRecordI {
 
     public boolean checkRecord(String s) {
         int absent = 0;
-        char prevRecA = ' ';
-        char prevRecB = ' ';
-
+        int late = 0;
         for (char c : s.toCharArray()) {
             if (c == 'A') {
                 absent++;
                 if (absent > 1) {
                     return false;
                 }
-            } else if (c == 'L' && prevRecA == 'L'&& prevRecB == 'L') {
-                return false;
+            } else if (c == 'L') {
+                if (late == 2) {
+                    return false;
+                }
+                late++;
+                continue;
             }
-            prevRecB = prevRecA;
-            prevRecA = c;
+            late = 0;
         }
         return true;
     }
