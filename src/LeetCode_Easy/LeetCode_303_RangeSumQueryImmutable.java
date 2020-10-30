@@ -20,22 +20,17 @@ public class LeetCode_303_RangeSumQueryImmutable {
     }
 
     class NumArray2 {
-        private int[] arr;
+        int[] sums;
 
         public NumArray2(int[] nums) {
-            if (nums.length == 0)
-                return;
-
-            arr = new int[nums.length];
-            arr[0] = nums[0];
-            for (int i = 1; i < nums.length; i++)
-                arr[i] = nums[i] + arr[i - 1];
+            sums = new int[nums.length + 1];
+            for (int i = 0; i < nums.length; i++) {
+                sums[i + 1] = sums[i] + nums[i];
+            }
         }
 
         public int sumRange(int i, int j) {
-            if (i == 0)
-                return arr[j];
-            return arr[j] - arr[i - 1];
+            return sums[j + 1] - sums[i];
         }
     }
 
