@@ -3,7 +3,6 @@ package LeetCode_Easy;
 public class LeetCode_9_PalindromeNumber {
     public boolean isPalindrome(int x) {
         long reverse = 0;
-        int original = x;
         if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         }
@@ -12,10 +11,7 @@ public class LeetCode_9_PalindromeNumber {
             x /= 10;
             reverse = reverse * 10 + n;
         }
-        if ((reverse == x || x == reverse / 10) && original >= 0) {
-            return true;
-        }
-        return false;
+        return reverse == x || x == reverse / 10;
     }
 
     public static void main(String[] args) {
